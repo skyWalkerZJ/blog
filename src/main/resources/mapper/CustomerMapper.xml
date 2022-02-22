@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.quilt.dao.CustomerDao">
+    <resultMap id="BaseResultMap" type="com.quilt.entity.Customer">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+    </resultMap>
+    <select id="GetAllCustomers" resultMap="BaseResultMap">
+        select name,email,id from customers;
+    </select>
+    <insert id="AddCustomer" parameterType="com.quilt.entity.Customer">
+      insert into customers(email,name) values(#{email},#{name});
+    </insert>
+</mapper>
